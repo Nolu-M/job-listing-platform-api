@@ -19,4 +19,6 @@ def create_job_alert_route():
     city = data['city']
     email = data['email']
 
+
+
     return f'Submission from {job} {province} {city} {email}'

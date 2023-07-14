@@ -1,0 +1,16 @@
+CREATE TABLE email_alert (
+	id SERIAL PRIMARY KEY,
+	job TEXT NOT NULL,
+	province TEXT NOT NULL,
+	city TEXT NOT NULL,
+	email TEXT NOT NULL UNIQUE
+);
+
+CREATE TABLE jobs (
+	id SERIAL PRIMARY KEY,
+	job_title TEXT NOT NULL UNIQUE,
+	company TEXT NOT NULL UNIQUE,
+	job_location TEXT NOT NULL,
+	job_desc TEXT NOT NULL,
+	job_req_ TEXT NOT NULL
+);
