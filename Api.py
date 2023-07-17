@@ -20,3 +20,16 @@ def create_job_alert_route():
     email = data['email']
 
     return f'Submission from {job} {province} {city} {email}'
+
+
+@app.route('/submit', methods=['POST'])
+def submit_job_listing():
+    
+    title = request.form['title']
+    company = request.form['company']
+    location = request.form['location']
+    salary = request.form['salary']
+    description = request.form['description']
+    requirements = request.form['requirements']
+
+    return 'Job listing successfully submitted'

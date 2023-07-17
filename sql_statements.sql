@@ -1,0 +1,10 @@
+
+CREATE TABLE job_listings (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(255) NOT NULL,
+  company VARCHAR(255) NOT NULL,
+  location VARCHAR(255) NOT NULL,
+  salary VARCHAR(255) NOT NULL,
+  description VARCHAR(255) NOT NULL,
+  requirements VARCHAR(255) NOT NULL,
+);
