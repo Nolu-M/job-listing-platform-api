@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-
-CREATE TABLE job_listings (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  title VARCHAR(255) NOT NULL,
-  company VARCHAR(255) NOT NULL,
-  location VARCHAR(255) NOT NULL,
-  salary VARCHAR(255) NOT NULL,
-  description VARCHAR(255) NOT NULL,
-  requirements VARCHAR(255) NOT NULL,
-);
-=======
 CREATE TABLE email_alert (
 	id SERIAL PRIMARY KEY,
 	job TEXT NOT NULL,
@@ -40,4 +28,3 @@ ADD job_location TEXT;
 
 INSERT INTO job( job_name, job_type, job_posted, job_location)
 VALUES ('Backend engineer', 'Contract', '2023-07-14', 'Gauteng');
->>>>>>> 9eaac29bb22090c19a17101b213fb187e966012d
