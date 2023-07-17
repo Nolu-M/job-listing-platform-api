@@ -11,7 +11,6 @@ conn_pool = pool.SimpleConnectionPool(
 )
 
 class db:
-<<<<<<< HEAD
  def __init__(self, table):
   self.table = table
   self.pool = conn_pool
@@ -33,25 +32,3 @@ class db:
    cursor = conn.cursor()
 
    cursor.execute('SELECT * FROM job_listings ORDER BY id DESC')
-=======
-    def __init__(self, table):
-        self.table = table
-        self.pool = conn_pool
-
-    def insert(self, columns, values):
-        conn = self.pool.getconn()
-        cursor = conn.cursor()
-
-        sql = f"INSERT INTO {self.table} ({columns}) VALUES ({values}) RETURNING id;"
-    
-        cursor.execute(sql)
-
-        curr_id = cursor.fetchone()[0]
-
-        conn.commit()
-
-        cursor.close()
-        conn.close()
-
-        return curr_id
->>>>>>> 9eaac29bb22090c19a17101b213fb187e966012d

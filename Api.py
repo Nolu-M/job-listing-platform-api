@@ -24,7 +24,6 @@ def create_job_alert_route():
     city = data['city']
     email = data['email']
 
-<<<<<<< HEAD
     return f'Submission from {job} {province} {city} {email}'
 
 
@@ -39,21 +38,3 @@ def submit_job_listing():
     requirements = request.form['requirements']
 
     return 'Job listing successfully submitted'
-=======
-    try:
-        email_alert_instance = db('email_alert')
-
-        email_alert_rows = email_alert_instance.select(condition=f"WHERE email='{email}'")
-        email_alert_id = None
-
-        if len(email_alert_rows):
-            email_alert_id = email_alert_rows[0][0]
-        else:
-            email_alert_id = email_alert_instance.insert("job, province, city, email", f"'{job}', '{province}', '{city}', '{email}'")
-
-    except AttributeError:
-        print('No such attribute')  
-    return f'Submission from {job} {province} {city} {email}'
-
-  
->>>>>>> 9eaac29bb22090c19a17101b213fb187e966012d
