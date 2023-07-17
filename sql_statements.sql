@@ -14,3 +14,13 @@ CREATE TABLE jobs (
 	job_desc TEXT NOT NULL,
 	job_req_ TEXT NOT NULL
 );
+
+CREATE TABLE job (
+	id SERIAL PRIMARY KEY,
+	job_name TEXT NOT NULL UNIQUE,
+	job_type TEXT NOT NULL UNIQUE,
+	job_posted DATE NOT NULL
+);
+
+INSERT INTO job( job_name, job_type, job_posted)
+VALUES ('Software engineer', 'Permanent', '2023-07-13');

@@ -9,3 +9,25 @@ conn_pool = pool.SimpleConnectionPool(
     user=os.getenv('DB_USER'),
     password=os.getenv('DB_PASS')
 )
+
+class db:
+    def __init__(self, table):
+        self.table = table
+        self.pool = conn_pool
+
+    def insert(self, columns, values):
+        conn = self.pool.getconn()
+        cursor = conn.cursor()
+
+        sql = f"INSERT INTO {self.table} ({columns}) VALUES ({values}) RETURNING id;"
+    
+        cursor.execute(sql)
+
+        curr_id = cursor.fetchone()[0]
+
+        conn.commit()
+
+        cursor.close()
+        conn.close()
+
+        return curr_id
