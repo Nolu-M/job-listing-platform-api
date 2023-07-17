@@ -22,5 +22,9 @@ CREATE TABLE job (
 	job_posted DATE NOT NULL
 );
 
-INSERT INTO job( job_name, job_type, job_posted)
-VALUES ('Software engineer', 'Permanent', '2023-07-13');
+ALTER TABLE job
+ADD job_location TEXT;
+
+
+INSERT INTO job( job_name, job_type, job_posted, job_location)
+VALUES ('Backend engineer', 'Contract', '2023-07-14', 'Gauteng');

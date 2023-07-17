@@ -27,13 +27,13 @@ def create_job_alert_route():
     try:
         email_alert_instance = db('email_alert')
 
-        email_rows = email_alert_instance.select(condition=f"WHERE email='{email}'")
-        email_id = None
+        email_alert_rows = email_alert_instance.select(condition=f"WHERE email='{email}'")
+        email_alert_id = None
 
-        if len(email_rows):
-            email_id = email_rows[0][0]
+        if len(email_alert_rows):
+            email_alert_id = email_alert_rows[0][0]
         else:
-            email_id = email_alert_instance.insert("job, province, city, email", f"'{job}', '{province}', '{city}', '{email}'")
+            email_alert_id = email_alert_instance.insert("job, province, city, email", f"'{job}', '{province}', '{city}', '{email}'")
 
     except AttributeError:
         print('No such attribute')  
