@@ -58,7 +58,7 @@ def job_search_route():
                 "job_type": row[2],
                 "job_posted": row[3],
                 "job_location": row[4],
-            }
+        }
 
             tmp_jobListings.append(tmp_job)
 
