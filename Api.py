@@ -39,4 +39,60 @@ def create_job_alert_route():
         print('No such attribute')  
     return f'Submission from {job} {province} {city} {email}'
 
-  
+
+
+@app.route('/job-search')
+def job_search_route():
+
+    try:
+        job_instance = db('jobs')
+
+        tmp_jobListings = []
+
+        rows = job_instance.select()
+
+        for row in rows:
+            tmp_job = {
+                "id": row[0],
+                "job_name": row[1],
+                "job_type": row[2],
+                "job_posted": row[3],
+                "job_location": row[4],
+            }
+
+            tmp_jobListings.append(tmp_job)
+
+        jobListings_dict = {
+            "jobs": tmp_jobListings
+        }
+
+    except AttributeError:
+        print('No such attribute')
+    return jobListings_dict
+
+
+
+@app.route('/job-search/<job_slug>')
+def job_route(job_slug):
+
+    try:
+        job_instance = db('job')
+
+        rows = job_instance.select(condition=f"WHERE slug='{job_slug}'")
+
+        if len(rows):
+            row = rows[0]
+
+            tmp_job = {
+                "id": row[0],
+                "job_title": row[1],
+                "company": row[2],
+                "job_location": row[3],
+                "job_desc": row[4],
+                "job_req_": row[5]
+            }
+    except AttributeError:
+        print('No such attribute')
+        return tmp_job
+    else:
+        return {}
