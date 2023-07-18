@@ -39,7 +39,6 @@ def create_job_alert_route():
         print('No such attribute')  
     return f'Submission from {job} {province} {city} {email}'
   
-    return f'Submission from {job} {province} {city} {email}'
 
 
 @app.route('/submit', methods=['POST'])
