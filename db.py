@@ -2,7 +2,7 @@ import os
 from psycopg2 import pool
 
 conn_pool = pool.SimpleConnectionPool(
-    1, 100,
+  1, 100,
     database=os.getenv('DB_NAME'),
     host=os.getenv('DB_HOST'),
     port=os.getenv('DB_PORT'),
@@ -36,19 +36,19 @@ class db:
   
    
 
-    def insert(self, columns, values):
-        conn = self.pool.getconn()
-        cursor = conn.cursor()
+def insert(self, columns, values):
+    conn = self.pool.getconn()
+    cursor = conn.cursor()
 
-        sql = f"INSERT INTO {self.table} ({columns}) VALUES ({values}) RETURNING id;"
+    sql = f"INSERT INTO {self.table} ({columns}) VALUES ({values}) RETURNING id;"
     
-        cursor.execute(sql)
+    cursor.execute(sql)
 
-        curr_id = cursor.fetchone()[0]
+    curr_id = cursor.fetchone()[0]
 
-        conn.commit()
+    conn.commit()
 
-        cursor.close()
-        conn.close()
+    cursor.close()
+    conn.close()
 
-        return curr_id
+    return curr_id
