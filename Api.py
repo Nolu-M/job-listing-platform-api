@@ -14,7 +14,6 @@ def main():
     return "Girlcode Careers API"
 
 
-
 @app.route('/create_job_alert', methods=["POST"])
 def create_job_alert_route():
     data = request.form
@@ -57,31 +56,36 @@ def submit_job_listing():
 @app.route('/job-search')
 def job_search_route():
 
-    try:
-        job_instance = db('jobs')
-
-        tmp_jobListings = []
-
-        rows = job_instance.select()
-
-        for row in rows:
-            tmp_job = {
-                "id": row[0],
-                "job_name": row[1],
-                "job_type": row[2],
-                "job_posted": row[3],
-                "job_location": row[4],
+        tmp_jobListings = [
+            {
+                "title": "Software engineer",
+                "type": "Job-type: Permanent",
+                "posted": "Posted: 27 June 2023",
+                "location": "Location: Eastern Cape",
+                "path": "/job-search/software-engineer"
+            },
+            {
+                "title": "Backend engineer",
+                "type": "Job-type: Contract",
+                "posted": "Posted: 29 June 2023",
+                "location": "Location: Eastern Cape",
+                "path": "/job-search/backend-engineer"
+            },
+            {
+                "title": "Frontend engineer",
+                "type": "Job-type: Permanent",
+                "posted": "Posted: 22 June 2023",
+                "location": "Location: Western Cape",
+                "path": "/job-search/frontend-engineer"
             }
+        ]
 
-            tmp_jobListings.append(tmp_job)
 
         jobListings_dict = {
             "jobs": tmp_jobListings
         }
 
-    except AttributeError:
-        print('No such attribute')
-    return jobListings_dict
+        return jobListings_dict
 
 
 
