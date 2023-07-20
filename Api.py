@@ -80,25 +80,28 @@ def job_search_route():
 
 @app.route('/job-search/<job_slug>')
 def job_route(job_slug):
+        tmp_jobs = []
 
-    try:
         job_instance = db('job')
 
         rows = job_instance.select(condition=f"WHERE slug='{job_slug}'")
 
-        if len(rows):
-            row = rows[0]
-
+        for row in rows:
             tmp_job = {
                 "id": row[0],
-                "job_title": row[1],
+                "title": row[1],
                 "company": row[2],
                 "job_location": row[3],
-                "job_desc": row[4],
-                "job_req_": row[5]
+                "salary": row[4],
+                "description": row[5],
+                "requirements": row[6],
+                "slug": row[7]
             }
-    except AttributeError:
-        print('No such attribute')
-        return tmp_job
-    else:
-        return {}
+
+            tmp_jobs.append(tmp_job)
+
+        job_dict = {
+            "job": tmp_job
+        }
+
+        return job_dict
