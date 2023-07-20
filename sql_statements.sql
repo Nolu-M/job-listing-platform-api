@@ -1,3 +1,4 @@
+-- Create email alert table
 CREATE TABLE email_alert (
 	id SERIAL PRIMARY KEY,
 	job TEXT NOT NULL,
@@ -6,25 +7,21 @@ CREATE TABLE email_alert (
 	email TEXT NOT NULL UNIQUE
 );
 
+-- Create jobs table for the job card
 CREATE TABLE jobs (
 	id SERIAL PRIMARY KEY,
-	job_title TEXT NOT NULL UNIQUE,
-	company TEXT NOT NULL UNIQUE,
+	job_title TEXT NOT NULL,
+	job_type TEXT NOT NULL,
+	job_posted TEXT NOT NULL,
 	job_location TEXT NOT NULL,
-	job_desc TEXT NOT NULL,
-	job_req_ TEXT NOT NULL
+	job_slug TEXT NOT NULL UNIQUE
 );
 
-CREATE TABLE job (
-	id SERIAL PRIMARY KEY,
-	job_name TEXT NOT NULL UNIQUE,
-	job_type TEXT NOT NULL UNIQUE,
-	job_posted DATE NOT NULL
-);
-
-ALTER TABLE job
-ADD job_location TEXT;
+-- Insert initial jobs
+INSERT INTO jobs (job_title, job_type, job_posted, job_location,
+				 job_slug)
+VALUES ('Software engineer', 'Permanent', '27 June 2023', 'Eastern Cape', 'software-engineer'),
+('Backend engineer', 'Contract', '29 June 2023', 'Eastern Cape', 'backend-engineer'),
+('Software engineer', 'Permanent', '22 June 2023', 'Western Cape', 'frontend-engineer');
 
 
-INSERT INTO job( job_name, job_type, job_posted, job_location)
-VALUES ('Backend engineer', 'Contract', '2023-07-14', 'Gauteng');

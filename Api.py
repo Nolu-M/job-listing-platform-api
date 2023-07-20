@@ -23,19 +23,16 @@ def create_job_alert_route():
     city = data['city']
     email = data['email']
 
-    try:
-        email_alert_instance = db('email_alert')
+    email_alert_instance = db('email_alert')
 
-        email_alert_rows = email_alert_instance.select(condition=f"WHERE email='{email}'")
-        email_alert_id = None
+    email_alert_rows = email_alert_instance.select(condition=f"WHERE email='{email}'")
+    email_alert_id = None
 
-        if len(email_alert_rows):
-            email_alert_id = email_alert_rows[0][0]
-        else:
-            email_alert_id = email_alert_instance.insert("job, province, city, email", f"'{job}', '{province}', '{city}', '{email}'")
-
-    except AttributeError:
-        print('No such attribute')  
+    if len(email_alert_rows):
+        email_alert_id = email_alert_rows[0][0]
+    else:
+        email_alert_id = email_alert_instance.insert("job, province, city, email", f"'{job}', '{province}', '{city}', '{email}'")
+  
     return f'Submission from {job} {province} {city} {email}'
   
 
@@ -55,37 +52,29 @@ def submit_job_listing():
 
 @app.route('/job-search')
 def job_search_route():
+        tmp_jobs = []
 
-        tmp_jobListings = [
-            {
-                "title": "Software engineer",
-                "type": "Job-type: Permanent",
-                "posted": "Posted: 27 June 2023",
-                "location": "Location: Eastern Cape",
-                "path": "/job-search/software-engineer"
-            },
-            {
-                "title": "Backend engineer",
-                "type": "Job-type: Contract",
-                "posted": "Posted: 29 June 2023",
-                "location": "Location: Eastern Cape",
-                "path": "/job-search/backend-engineer"
-            },
-            {
-                "title": "Frontend engineer",
-                "type": "Job-type: Permanent",
-                "posted": "Posted: 22 June 2023",
-                "location": "Location: Western Cape",
-                "path": "/job-search/frontend-engineer"
+        jobs_instance = db('jobs')
+
+        rows = jobs_instance.select()
+
+        for row in rows:
+            tmp_job = {
+                "id": row[0],
+                "job_title": row[1],
+                "job_type": row[2],
+                "job_posted": row[3],
+                "job_location": row[4],
+                "job_slug": row[5]
             }
-        ]
 
+            tmp_jobs.append(tmp_job)
 
-        jobListings_dict = {
-            "jobs": tmp_jobListings
+        jobs_dict = {
+            "jobs": tmp_jobs
         }
 
-        return jobListings_dict
+        return jobs_dict
 
 
 
