@@ -41,3 +41,23 @@ INSERT INTO job(title, company, job_location, salary,
 VALUES ('Software engineer', 'Career Circuit', 'Eastern Cape',
 	   '30000', 'Our client is currently looking for a qualified candidate to assist in our software development needs. The Developer will work alongside the rest of the team to develop, improve, and optimise our current software solutions and as well as new systems to follow.',
 	   'Desired experience and qualifications: 3 year undergraduate degree or diploma in Computer Science or Information Systems, or a related field. Strong problem-solving skills.', 'software-engineer');
+	   
+INSERT INTO job(title, company, job_location, salary,
+			   description, requirements, slug)
+VALUES ('Backend engineer', 'Fokus Personnel Services', 'Eastern Cape',
+	   '35000', 'A National firm within the manufacturing industry is looking to appoint a Backend Developer for their branch in East London.',
+	   'Min 5 years proven work experience as a Backend Developer
+		Developed and maintained a micro services-based architecture with ASP.Net Core using C# and MSSQL Server
+		Worked with Object-relational Mappers, such as Entity Framework Core, Dapper, etc
+		Familiar with authentication protocols, such as OAuth 2.0 and OpenID Connect (OIDC), as well as security token service concepts
+		Designed and implemented RESTful API endpoints for data retrieval, validation, and manipulation 
+		Passionate about writing clean, maintainable code and working in a collaborative environment', 'backend-engineer'),
+		('Frontend engineer', 'Network Recruitment', 'Western Cape',
+	   '45000', 'A Global Partner in the Western Cape area is recruiting for a Front-end Developer with 2+ years experience to assist with the development of their custom software product. They have a young and vibrant team, and are looking for a good fit to their craziness.',
+	   '2+ years Front-end Development experience
+		VueJS
+		JavaScript
+		Knowledge of C#
+		Knowledge of Mobile Tech (Android/IOS)
+		Matric
+		Degree/Diploma beneficial', 'frontend-engineer');
