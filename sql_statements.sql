@@ -30,7 +30,7 @@ CREATE TABLE job (
 	title TEXT NOT NULL,
 	company TEXT NOT NULL,
 	job_location TEXT NOT NULL,
-	salary INTEGER NOT NULL,
+	salary FLOAT NOT NULL,
 	description TEXT NOT NULL,
 	requirements TEXT NOT NULL,
 	slug TEXT NOT NULL UNIQUE
